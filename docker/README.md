@@ -1,6 +1,5 @@
 
-
-- ကျွန်တော် ဒီ post လေးမှာ  beginner တွေအတွက် `Ubuntu 24.04 LTS`  ပေါ်မှာ docker install ပြုလုပ်ပုံကို လေ့လာလို့ရအောင် case study အနေနဲ့ ပြောပြပေးထားပါတယ်။
+- ကျွန်တော် ဒီ post လေးမှာတော့   beginner တွေအတွက်  `Ubuntu 20.04 LTS`, `Ubuntu 24.04 LTS`  Server/Desktop version ပေါ်မှာ docker install ပြုလုပ်ပုံကို လေ့လာလို့ရအောင် case study အနေနဲ့ ပြောပြပေးထားပါတယ်။
 - နားလည်ပြီးသားသူတွေအနေနဲ့ ကတော့ အောက်ဆုံးမှာ `docker-setup.sh` script ကို အသုံးပြုလို့ရအောင် ထည့်ပေးထားပါတယ်။
 
 
@@ -15,51 +14,7 @@ sudo apt-get update -y
 
 ## Install necessary dependencies
 
-- လိုအပ်တဲ့ packages တွေနဲ့ သူတို့ရဲ့ dependencies တွေကို ထပ်မံ install ပြုလုပ်ပါမယ်။
-
-```bas
-fficial stable repository ကို အပေါက်က gpg key ကို အသုံးပြုပြီး signed ပြုလုပ်ကာ apt repo sources directory ကို ထည့်ပါမယ်။
-
-```bash
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-
-## Update package manager repositories
-
-- `/etc/apt/sources.d` directory အောက်မှာ `docker.list` file name နဲ့ docker ရဲ့ official repo address ကို ထည့်ပြီးဆိုတော့ apt package manager ကို အသုံးပြုပြီး docker ရဲ့ repository က နေ update to date package information ကို `sudo apt update -y ` command ကို အသုံးပြုပြီး download ပြုလုပ်ပါမယ်။
-
-```bash
-sudo apt-get update
-```
-
-## Install Docker Packages
-
-- update ပြုလုပ်ပြီးသွားရင်တော့ လိုအပ်တဲ့ docker packages တွေကို စတင် install ပြုလုပ်လို့ ရပါပြီ။
-
-```bash
-
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-- ပြီးသွားရင်တော့ docker ကို successfully installed ပြုလုပ်ပြီးသွားပြဖြစ်ဖြစ်ပါတယ်။
-
-
-
-## Check Docke Service Status
-
-- `sudo systemctl status docker.service` command ကို အသုံးပြုပြီး`docker` service run / မ run ကို verify ပြုလုပ်ကြည့်ပါမယ်။
-
-```bash
-sysadmin@OpenShellMM:~$ sudo systemctl status docker.service
-[sudo] password for sysadmin:
-● docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enab
-
-
-ssion ကို တွေ့ရမှာ ဖြစ်ပါတယ်။ 
+- လိုအပ်တဲ့ packages တွေနဲ့ သူတို့ရဲ့ dependencies တွေကို ထပ်er အနေနဲ့ `docker ps -a ` command အသုံးပြုကြည့်မယ်ဆို အောက်ပါ permission ကို တွေ့ရမှာ ဖြစ်ပါတယ်။ 
 
 ```bash
 
@@ -108,63 +63,4 @@ CONTAINER ID   IMAGE                           COMMAND                  CREATED 
 curl -fsSL https://raw.githubusercontent.com/openshellmm/devops-tools-and-infra-setup/main/docker/docker-setup.sh | bash
 ```
 
-m ကျွန်တော် ဒီ post လေးမှာ  beginner တွေအတွက် `Ubuntu 24.04 LTS`  ပေါ်မှာ docker install ပြုလုပ်ပုံကို လေ့လာလို့ရအောင် case study အနေနဲ့ ပြောပြပေးထားပါတယ်။
-- နားလည်ပြီးသားသူတွေအနေနဲ့ ကတော့ အောက်ဆုံးမှာ `docker-setup.sh` script ကို အသုံးပြုလို့ရအောင် ထည့်ပေးထားပါတယ်။
 
-
-## Update package manager repositories
-
-- အရင်ဆုံး apt package manager ရဲ့ repository update ပြုလုပ်ရပါမယ်။ 
-
-```bash
-sudo apt-get update -y
-```
-
-
-## Install necessary dependencies
-
-- လိုအပ်တဲ့ packages တွေနဲ့ သူတို့ရဲ့ dependencies တွေကို ထပ်မံ install ပြုလုပ်ပါမယ်။
-
-```bash
-sudo
-fficial stable repository ကို အပေါက်က gpg key ကို အသုံးပြုပြီး signed ပြုလုပ်ကာ apt repo sources directory ကို ထည့်ပါမယ်။
-
-```bash
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-
-## Update package manager repositories
-
-- `/etc/apt/sources.d` directory အောက်မှာ `docker.list` file name နဲ့ docker ရဲ့ official repo address ကို ထည့်ပြီးဆိုတော့ apt package manager ကို အသုံးပြုပြီး docker ရဲ့ repository က နေ update to date package information ကို `sudo apt update -y ` command ကို အသုံးပြုပြီး download ပြုလုပ်ပါမယ်။
-
-```bash
-sudo apt-get update
-```
-
-## Install Docker Packages
-
-- update ပြုလုပ်ပြီးသွားရင်တော့ လိုအပ်တဲ့ docker packages တွေကို စတင် install ပြုလုပ်လို့ ရပါပြီ။
-
-```bash
-
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-- ပြီးသွားရင်တော့ docker ကို successfully installed ပြုလုပ်ပြီးသွားပြဖြစ်ဖြစ်ပါတယ်။
-
-
-
-## Check Docke Service Status
-
-- `sudo systemctl status docker.service` command ကို အသုံးပြုပြီး`docker` service run / မ run ကို verify ပြုလုပ်ကြည့်ပါမယ်။
-
-```bash
-sysadmin@OpenShellMM:~$ sudo systemctl status docker.service
-[sudo] password for sysadmin:
-● docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
- 
-# SetUm SonarQube
